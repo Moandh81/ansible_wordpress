@@ -1,0 +1,34 @@
+2024-03-16 13:40:33,072 p=3519 u=ec2-user n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-03-16 13:40:33,075 p=3519 u=ec2-user n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2024-03-16 13:40:33,178 p=3519 u=ec2-user n=ansible | PLAY [test getting salt content] ***************************************************************************************************************************************
+2024-03-16 13:40:33,188 p=3519 u=ec2-user n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2024-03-16 13:40:34,296 p=3519 u=ec2-user n=ansible | ok: [localhost]
+2024-03-16 13:40:34,319 p=3519 u=ec2-user n=ansible | TASK [get content of url] **********************************************************************************************************************************************
+2024-03-16 13:40:35,463 p=3519 u=ec2-user n=ansible | ok: [localhost]
+2024-03-16 13:40:35,472 p=3519 u=ec2-user n=ansible | TASK [debug last task] *************************************************************************************************************************************************
+2024-03-16 13:40:35,490 p=3519 u=ec2-user n=ansible | ok: [localhost] => {
+    "msg": "define('AUTH_KEY',         '_D{T9e-^E3VQnl/r(]8yb4QB+nf9<2w,$V`tU9H+<lv|vmA|mB<_m6n>^Hh}Dp/s');\ndefine('SECURE_AUTH_KEY',  'QDq,Qmq]()!*!2 1_!5`(_IFINZoisDC:PmydhO5KKq(}0_<g$}yOPw7+k(EU+cl');\ndefine('LOGGED_IN_KEY',    'neZ`I>2u>Sg}MOw3eVcl/*y.QP=fdAUY4@}w38m3F2T$9mqLI:YH_o7& hvga |H');\ndefine('NONCE_KEY',        'zW~AHa[A=OvEU%X6P)X?v96B(E_]D(>>.^[aOV}QWKjBN+MGxdd:t$XYh,L-yZt|');\ndefine('AUTH_SALT',        '+]s<G4<+.j%RfB<B-B3|(V pvY~mzRRG3|6W:m%m4x~N9GoDBd219HQD=iWB<pjY');\ndefine('SECURE_AUTH_SALT', 'C51|Vq)(AZ8[.>yOB<_kp~hzxIo<e[{Q.sH}*wQ-HN&_JBN|C)@:7p^P*O?v-.c+');\ndefine('LOGGED_IN_SALT',   'Wc^P@s%Qfz<szOEv4__X{|D*@?*S9R9vtQLbravVgsGkFqFFN#DXa>*$SpQ/(U}s');\ndefine('NONCE_SALT',       '|/%HxWhiOB-mh#bw6rQgH83Pj,6g]^1WmPhuSyJp6%jM@;3sABs-W~D<%M|Xx4Om');\n"
+}
+2024-03-16 13:40:35,499 p=3519 u=ec2-user n=ansible | TASK [insert content into another file] ********************************************************************************************************************************
+2024-03-16 13:40:35,961 p=3519 u=ec2-user n=ansible | changed: [localhost]
+2024-03-16 13:40:35,989 p=3519 u=ec2-user n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2024-03-16 13:40:35,989 p=3519 u=ec2-user n=ansible | localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   
+2024-03-16 13:41:58,497 p=3661 u=ec2-user n=ansible | [WARNING]: No inventory was parsed, only implicit localhost is available
+
+2024-03-16 13:41:58,501 p=3661 u=ec2-user n=ansible | [WARNING]: provided hosts list is empty, only localhost is available. Note that the implicit localhost does not match 'all'
+
+2024-03-16 13:41:58,602 p=3661 u=ec2-user n=ansible | PLAY [test getting salt content] ***************************************************************************************************************************************
+2024-03-16 13:41:58,611 p=3661 u=ec2-user n=ansible | TASK [Gathering Facts] *************************************************************************************************************************************************
+2024-03-16 13:41:59,707 p=3661 u=ec2-user n=ansible | ok: [localhost]
+2024-03-16 13:41:59,729 p=3661 u=ec2-user n=ansible | TASK [get content of url] **********************************************************************************************************************************************
+2024-03-16 13:42:00,876 p=3661 u=ec2-user n=ansible | ok: [localhost]
+2024-03-16 13:42:00,886 p=3661 u=ec2-user n=ansible | TASK [debug last task] *************************************************************************************************************************************************
+2024-03-16 13:42:00,904 p=3661 u=ec2-user n=ansible | ok: [localhost] => {
+    "msg": "define('AUTH_KEY',         '+@[(P6n}2|UguvNag-w#z~ pc*I!TWD|j:XQO9{6#]b.Bk~roK`s}3y(m$D-?xB-');\ndefine('SECURE_AUTH_KEY',  'O*?oFxai&z_ RNp!?_Xn(?HeKo%V{3qRV?]#VBhJh<A;kcw0Je+iWZycJP?uyF{}');\ndefine('LOGGED_IN_KEY',    '=0e%Jo>~3mopS_(GXF8[^b3y9u))LR|-d|ENa%9JY:^m+3 KZFf!qC6;bX+616+m');\ndefine('NONCE_KEY',        'DuYj5bIQk3&]Z~3/Aq#ev_OtAIgQ.~?LFTZw[XK=(}-z WF/Ov]P!@X*u2SD_VnB');\ndefine('AUTH_SALT',        'b-}0KEx}-{a M98WhR2/5W`Z?Dab(wSJ{eryQk^fwuQ9,!Ka  V{aG.VcGv3^<P|');\ndefine('SECURE_AUTH_SALT', 'PAoT!xLfTP3_(+z-,M=m[HtLl$`J%-+cxfQ=i-R1_bI9S=1gn6^6Iz_{0.Mri7^?');\ndefine('LOGGED_IN_SALT',   'MgWAQiBrj$>|`*m4&|0lX@<LN;,hi}W:}q*+NG`:hy<N1B7P+q%v.fs$3j?~ ^Jv');\ndefine('NONCE_SALT',       '%DZJ)iiX127SKE)-Ay~B$>B,hS5-SFt{Qxp]!eEK8*D_6TZn@h&2rwr268Se#+B:');\n"
+}
+2024-03-16 13:42:00,913 p=3661 u=ec2-user n=ansible | TASK [insert content into another file] ********************************************************************************************************************************
+2024-03-16 13:42:01,377 p=3661 u=ec2-user n=ansible | changed: [localhost]
+2024-03-16 13:42:01,406 p=3661 u=ec2-user n=ansible | PLAY RECAP *************************************************************************************************************************************************************
+2024-03-16 13:42:01,406 p=3661 u=ec2-user n=ansible | localhost                  : ok=4    changed=1    unreachable=0    failed=0    skipped=0    rescued=0    ignored=0   

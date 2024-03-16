@@ -1,0 +1,150 @@
+---
+- name: this is the wordpress play 
+  hosts: localhost
+  vars_files:
+    - variables/packages.yml
+    - variables/secret.yml
+  tasks:
+    - name: install different packages on the system
+      dnf:
+        name: "{{item}}"
+        state: present
+      loop:  "{{packages}}"
+      notify: restart the httpd server
+      notify: restart the mariadb server
+      changed_when: true
+  
+
+
+
+    - name: download the latest version of wordpress  
+      get_url:
+        url: "{{wordpress_package_url}}"
+        dest: "{{wordpress_installation_folder}}"
+
+
+    
+
+
+
+
+
+    - name: unarchive the wordpress installation package
+      unarchive:
+        src: /var/www/html/wordpress-6.4.3.tar.gz
+        dest: /var/www/html/
+
+    
+
+    - name: install python3-pip on the instance
+      yum:
+        name: python3-pip
+
+    
+    - name: install the mysql python package for python
+      pip:
+        name: PyMySQL==1.1.0
+          
+    
+
+    - name: create user wordpress with password wordpress and all the data privileges
+      mysql_user:
+        name: '{{ wordpress_db_user  }}'
+        host: localhost
+        state: present
+        login_user: root
+        login_password: ''
+        priv: '*.*:ALL'
+        password: '{{db_user_password}}'
+        login_unix_socket: /var/lib/mysql/mysql.sock
+
+
+    - name: create the wordpress database
+      mysql_db:
+        name: '{{wordpress_db_name}}'
+        state: present
+        login_unix_socket: /var/lib/mysql/mysql.sock 
+
+
+
+
+    - name: populate the wp-config.php file with the corresponding values
+      template:
+        src: wp-config.php
+        dest: /var/www/html/wordpress/wp-config.php
+
+    
+
+
+    - name: Allow htaccess on httpd
+      template:
+        src: httpd.conf
+        dest: /etc/httpd/conf/httpd.conf
+        owner: root
+        group: root
+        mode: '0644'
+      notify: restart the httpd server
+      
+    
+
+
+    - name: install php-gd library
+      dnf:
+        name: php-gd
+        state: present
+
+
+    - name: recursively change ownership of /var/www folder to apache
+      file:
+        path: /var/www
+        state: directory
+        recurse: yes 
+        owner: apache
+        group: apache
+
+    
+    - name: change permissions on folder /var/www to 2755
+      file:
+        path: /var/www
+        state: directory
+        mode: '2755'
+
+    - name: change perimissions to 2755 on subfolders 
+      command: find /var/www -type d -exec sudo chmod 2775 {} \;
+
+    
+    - name: changer permisisons to 644 on files in the subfolders 
+      command: find /var/www -type f -exec sudo chmod 0644 {} \;
+
+
+
+
+
+      
+
+  handlers:
+    - name: restart the httpd server
+      service:
+        name: httpd
+        state: started
+
+    - name: restart the mariadb server
+      service:
+        name: mariadb
+        state: started
+
+
+
+
+  
+
+- name: this is the second playbook, it will check if the website is working
+  hosts: localhost
+  tasks:
+    - name: this task will check if the website is reachable 
+      uri:
+        url: http://13.38.129.154/
+        method: GET 
+        status_code: 403  
+
+

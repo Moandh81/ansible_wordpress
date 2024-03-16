@@ -1,0 +1,23 @@
+---
+- name: test getting salt content 
+  hosts: localhost
+  tasks:
+    - name: get content of url 
+      uri:
+        url: https://api.wordpress.org/secret-key/1.1/salt/
+        method: GET 
+        return_content: true
+      register: response
+
+
+    - name: debug last task
+      debug:
+        msg: "{{response.content}}"
+
+
+    - name: insert content into another file 
+      lineinfile:
+        path: salt.txt
+        line: "{{response.content}}"
+        state: present
+        insertafter: 'BOF'
